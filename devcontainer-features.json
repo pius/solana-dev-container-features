@@ -1,17 +1,23 @@
 {
     "features": [
         {
-            "id": "helloworld",
-            "name": "My First Feature",
+            "id": "solana",
+            "name": "Solana",
             "options": {
-                "greeting": {
+                "version": {
                     "type": "string",
-                    "proposals": [ "hey", "hello", "hi", "howdy" ],
-                    "default": "hey",
-                    "description": "Select a pre-made greeting, or enter your own"
+                    "proposals": [
+                        "1.9.1"
+                    ],
+                    "default": "1.9.1",
+                    "description": "Solana version"
                 }
             },
-            "include": ["ubuntu"]
+            "include": [
+                "ubuntu",
+                "debian",
+                "rust"
+            ]
         },
         {
             "id": "color",
@@ -19,12 +25,20 @@
             "options": {
                 "favorite": {
                     "type": "string",
-                    "enum": [ "red", "gold", "green" ],
+                    "enum": [
+                        "red",
+                        "gold",
+                        "green"
+                    ],
                     "default": "red",
                     "description": "Choose your favorite color."
                 }
             },
-            "include": ["ubuntu"]
+            "include": [
+                "ubuntu",
+                "debian",
+                "rust"
+            ]
         }
     ]
 }

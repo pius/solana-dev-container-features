@@ -11,11 +11,18 @@ set -a
 set +a
 
 
-if [ ! -z ${_BUILD_ARG_HELLOWORLD} ]; then
-    echo "Activating feature 'helloworld'"
+if [ ! -z ${_BUILD_ARG_SOLANA} ]; then
+    echo "Activating feature 'solana'"
 
+    apt-get -y install --no-install-recommends default-jre libudev-dev \
     # Build args are exposed to this entire feature set following the pattern:  _BUILD_ARG_<FEATURE ID>_<OPTION NAME>
-    GREETING=${_BUILD_ARG_HELLOWORLD_GREETING:-undefined}
+    SOLANA_VERSION=${_BUILD_ARG_SOLANA_VERSION:-undefined}
+    sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
+    #export CARGO_HOME="/usr/local/cargo"
+    #export RUSTUP_HOME="/usr/local/rustup"
+    export PATH=${CARGO_HOME}/bin:${PATH}
+
+    cargo install spl-token-cli
 
     tee /usr/hello.sh > /dev/null \
     << EOF
