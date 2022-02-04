@@ -15,7 +15,7 @@ if [ ! -z ${_BUILD_ARG_SOLANA} ]; then
     echo "Activating feature 'solana'"
 
     apt-get update
-    apt-get -y install --no-install-recommends pkg-config default-jre libudev-dev 
+    apt-get -y install --no-install-recommends libudev-dev build-essential curl pkg-config libssl-dev
     # Build args are exposed to this entire feature set following the pattern:  _BUILD_ARG_<FEATURE ID>_<OPTION NAME>
     SOLANA_VERSION=${_BUILD_ARG_SOLANA_VERSION:-undefined}
     sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
