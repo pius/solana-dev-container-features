@@ -18,12 +18,23 @@ if [ ! -z ${_BUILD_ARG_SOLANA} ]; then
     apt-get -y install --no-install-recommends libudev-dev build-essential curl pkg-config libssl-dev
     # Build args are exposed to this entire feature set following the pattern:  _BUILD_ARG_<FEATURE ID>_<OPTION NAME>
     SOLANA_VERSION=${_BUILD_ARG_SOLANA_VERSION:-undefined}
-    sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
+
+    echo "${USERNAME}"    
+
+    su - ${USERNAME} -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
+    # sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
     export CARGO_HOME="/usr/local/cargo"
     export RUSTUP_HOME="/usr/local/rustup"
     export PATH=${CARGO_HOME}/bin:${PATH}
 
     cargo install spl-token-cli
+
+    # bash -i -c 'solana config set --url localhost' 
+    su - ${USERNAME} -c 'solana config set --url localhost'
+    #bash -i -c 'solana config set --keypair $(pwd)/app/dapwords/test_wallets/deployer_wallet.json' 
+    # npm i -g @project-serum/anchor-cli
+    su - ${USERNAME} -c 'npm i -g @project-serum/anchor-cli'
+    #npm i -g pnpm
 
     tee /usr/hello.sh > /dev/null \
     << EOF
