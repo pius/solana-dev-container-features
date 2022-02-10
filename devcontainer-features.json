@@ -14,9 +14,7 @@
                 }
             },
             "include": [
-                "ubuntu",
-                "debian",
-                "rust"
+                "typescript-node"
             ]
         },
         {
@@ -35,9 +33,7 @@
                 }
             },
             "include": [
-                "ubuntu",
-                "debian",
-                "rust"
+                "typescript-node"
             ]
         }
     ]
