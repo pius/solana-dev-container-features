@@ -16,25 +16,6 @@
             "include": [
                 "typescript-node"
             ]
-        },
-        {
-            "id": "color",
-            "name": "A feature to remind you of your favorite color",
-            "options": {
-                "favorite": {
-                    "type": "string",
-                    "enum": [
-                        "red",
-                        "gold",
-                        "green"
-                    ],
-                    "default": "red",
-                    "description": "Choose your favorite color."
-                }
-            },
-            "include": [
-                "typescript-node"
-            ]
         }
     ]
 }
