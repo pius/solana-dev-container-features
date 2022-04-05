@@ -45,4 +45,5 @@ if [ ! -z ${_BUILD_ARG_SOLANA} ]; then
 
     su - ${USERNAME} -c 'solana config set --url localhost'    
     su - ${USERNAME} -c 'npm i -g @project-serum/anchor-cli'
+    PATH="/${USERNAME}/.local/share/solana/install/active_release/bin:$PATH"
 fi
