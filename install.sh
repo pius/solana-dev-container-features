@@ -39,11 +39,12 @@ if [ ! -z ${_BUILD_ARG_SOLANA} ]; then
     su - ${USERNAME} -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
     export CARGO_HOME="/usr/local/cargo"
     export RUSTUP_HOME="/usr/local/rustup"
-    export PATH=${CARGO_HOME}/bin:${PATH}
+    export SOLANA_HOME="/${USERNAME}/.local/share/solana/install/active_release/bin"
+    export PATH=${SOLANA_HOME}/bin:${CARGO_HOME}/bin:${PATH}
 
     cargo install spl-token-cli
 
     su - ${USERNAME} -c 'solana config set --url localhost'    
     su - ${USERNAME} -c 'npm i -g @project-serum/anchor-cli'
-    PATH="/${USERNAME}/.local/share/solana/install/active_release/bin:$PATH"
+    
 fi
